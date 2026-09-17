@@ -1,0 +1,269 @@
+{
+  "SNEAKER": [
+    "SNEAKER",
+    "sneaker",
+    "sneakers",
+    "shoe",
+    "shoes",
+    "casual sneaker",
+    "lifestyle sneaker",
+    "athletic sneaker",
+    "low-top sneaker",
+    "running sneaker"
+  ],
+
+  "RUNNING_SHOE": [
+    "RUNNING_SHOE",
+    "running shoe",
+    "running shoes",
+    "runner",
+    "jogging shoe",
+    "athletic running shoe"
+  ],
+
+  "BASKETBALL_SHOE": [
+    "BASKETBALL_SHOE",
+    "basketball shoe",
+    "basketball shoes"
+  ],
+
+  "FOOTBALL_SHOE": [
+    "FOOTBALL_SHOE",
+    "football shoe",
+    "football shoes",
+    "soccer cleat",
+    "football cleat"
+  ],
+
+  "TRAINING_SHOE": [
+    "TRAINING_SHOE",
+    "training shoe",
+    "training shoes",
+    "gym shoe",
+    "gym shoes",
+    "workout shoe",
+    "cross training shoe"
+  ],
+
+  "TENNIS_SHOE": [
+    "TENNIS_SHOE",
+    "tennis shoe",
+    "tennis shoes"
+  ],
+
+  "SLIDE": [
+    "SLIDE",
+    "slide",
+    "slides",
+    "slipper"
+  ],
+
+  "SANDAL": [
+    "SANDAL",
+    "sandal",
+    "sandals"
+  ],
+
+  "BOOT": [
+    "BOOT",
+    "boot",
+    "boots",
+    "ankle boot",
+    "combat boot"
+  ],
+
+  "TSHIRT": [
+    "TSHIRT",
+    "t-shirt",
+    "tshirt",
+    "tee shirt"
+  ],
+
+  "SWEATSHIRT": [
+    "SWEATSHIRT",
+    "sweatshirt",
+    "crewneck",
+    "hoodie",
+    "hooded sweatshirt"
+  ],
+
+  "SHIRT": [
+    "SHIRT",
+    "shirt",
+    "button shirt",
+    "dress shirt"
+  ],
+
+  "JACKET": [
+    "JACKET",
+    "jacket",
+    "zip jacket",
+    "coat",
+    "outerwear",
+    "rain jacket",
+    "raincoat"
+  ],
+
+  "PARKA": [
+    "PARKA",
+    "parka"
+  ],
+
+  "POLAR": [
+    "POLAR",
+    "polar",
+    "fleece",
+    "fleece top",
+    "fleece jacket"
+  ],
+
+  "VEST": [
+    "VEST",
+    "vest",
+    "gilet"
+  ],
+
+  "TANK_TOP": [
+    "TANK_TOP",
+    "tank top",
+    "tank",
+    "sleeveless top"
+  ],
+
+  "SPORTS_BRA": [
+    "SPORTS_BRA",
+    "sports bra",
+    "sport bra"
+  ],
+
+  "BODYSUIT": [
+    "BODYSUIT",
+    "bodysuit",
+    "body suit"
+  ],
+
+  "TROUSERS": [
+    "TROUSERS",
+    "trousers",
+    "pants",
+    "pant",
+    "jeans",
+    "denim jeans",
+    "denim pants"
+  ],
+
+  "SHORTS": [
+    "SHORTS",
+    "shorts"
+  ],
+
+  "LEGGINGS": [
+    "LEGGINGS",
+    "leggings"
+  ],
+
+  "SWEATPANTS": [
+    "SWEATPANTS",
+    "sweatpants",
+    "joggers",
+    "jogger"
+  ],
+
+  "TRACKSUIT": [
+    "TRACKSUIT",
+    "tracksuit",
+    "track suit"
+  ],
+
+  "DRESS": [
+    "DRESS",
+    "dress"
+  ],
+
+  "SKIRT": [
+    "SKIRT",
+    "skirt"
+  ],
+
+  "BERMUDA": [
+    "BERMUDA",
+    "bermuda",
+    "bermuda shorts"
+  ],
+
+  "SWIMWEAR": [
+    "SWIMWEAR",
+    "swimwear",
+    "swimsuit",
+    "swimming suit",
+    "bathing suit"
+  ],
+
+  "BAG": [
+    "BAG",
+    "bag",
+    "handbag"
+  ],
+
+  "BACKPACK": [
+    "BACKPACK",
+    "backpack",
+    "rucksack"
+  ],
+
+  "WAIST_BAG": [
+    "WAIST_BAG",
+    "waist bag",
+    "belt bag",
+    "bum bag",
+    "fanny pack"
+  ],
+
+  "SHOULDER_BAG": [
+    "SHOULDER_BAG",
+    "shoulder bag"
+  ],
+
+  "SOCKS": [
+    "SOCKS",
+    "socks",
+    "sock"
+  ],
+
+  "CAP": [
+    "CAP",
+    "cap",
+    "baseball cap",
+    "baseball hat",
+    "sports cap"
+  ],
+
+  "BEANIE": [
+    "BEANIE",
+    "beanie",
+    "knit beanie",
+    "winter beanie"
+  ],
+
+  "BANDANA": [
+    "BANDANA",
+    "bandana"
+  ],
+
+  "SPORTS_EQUIPMENT": [
+    "SPORTS_EQUIPMENT",
+    "sports equipment",
+    "sport equipment"
+  ],
+
+  "SHOE_CARE": [
+    "SHOE_CARE",
+    "shoe care",
+    "shoe care product"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

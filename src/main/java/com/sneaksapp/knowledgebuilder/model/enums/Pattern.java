@@ -1,0 +1,20 @@
+package com.sneaksapp.knowledgebuilder.model.enums;
+
+public enum Pattern {
+
+SOLID,
+STRIPED,
+CHECKERED,
+POLKA_DOT,
+FLORAL,
+ANIMAL_PRINT,
+CAMOUFLAGE,
+GEOMETRIC,
+ABSTRACT,
+GRAPHIC,
+LOGO,
+COLOR_BLOCK,
+PRINTED,
+TEXTURED,
+UNKNOWN
+}

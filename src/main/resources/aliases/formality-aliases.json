@@ -1,0 +1,41 @@
+{
+  "VERY_CASUAL": [
+    "VERY_CASUAL",
+    "very casual",
+    "very_casual",
+    "relaxed"
+  ],
+
+  "CASUAL": [
+    "CASUAL",
+    "casual",
+    "daily",
+    "everyday"
+  ],
+
+  "SMART_CASUAL": [
+    "SMART_CASUAL",
+    "smart casual",
+    "smart_casual",
+    "business casual"
+  ],
+
+  "BUSINESS": [
+    "BUSINESS",
+    "business",
+    "office",
+    "professional"
+  ],
+
+  "FORMAL": [
+    "FORMAL",
+    "formal",
+    "elegant",
+    "dressy"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "CASUAL": [
+    "CASUAL",
+    "casual"
+  ],
+
+  "SPORT": [
+    "SPORT",
+    "sport",
+    "sports",
+    "athletic",
+    "sporty",
+    "running"
+  ],
+
+  "STREETWEAR": [
+    "STREETWEAR",
+    "streetwear",
+    "street"
+  ],
+
+  "SMART_CASUAL": [
+    "SMART_CASUAL",
+    "smart casual",
+    "business casual"
+  ],
+
+  "FORMAL": [
+    "FORMAL",
+    "formal"
+  ],
+
+  "BUSINESS": [
+    "BUSINESS",
+    "business",
+    "office"
+  ],
+
+  "OUTDOOR": [
+    "OUTDOOR",
+    "outdoor",
+    "hiking"
+  ],
+
+  "LOUNGEWEAR": [
+    "LOUNGEWEAR",
+    "loungewear",
+    "homewear"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

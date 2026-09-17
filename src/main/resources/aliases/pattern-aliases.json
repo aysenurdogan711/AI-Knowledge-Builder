@@ -1,0 +1,110 @@
+{
+  "SOLID": [
+    "SOLID",
+    "solid",
+    "plain",
+    "minimal",
+    "paneled mesh",
+    "panel",
+    "paneled"
+  ],
+
+  "STRIPED": [
+    "STRIPED",
+    "striped",
+    "stripe",
+    "stripe pattern",
+    "striped pattern"
+  ],
+
+  "CHECKERED": [
+    "CHECKERED",
+    "checkered",
+    "plaid",
+    "checker",
+    "checkerboard"
+  ],
+
+  "POLKA_DOT": [
+    "POLKA_DOT",
+    "polka dot",
+    "polka-dot",
+    "dots",
+    "dot pattern"
+  ],
+
+  "FLORAL": [
+    "FLORAL",
+    "floral",
+    "floral print",
+    "flower print",
+    "flower pattern"
+  ],
+
+  "ANIMAL_PRINT": [
+    "ANIMAL_PRINT",
+    "animal print",
+    "animal pattern",
+    "leopard print",
+    "zebra print",
+    "snake print"
+  ],
+
+  "CAMOUFLAGE": [
+    "CAMOUFLAGE",
+    "camouflage",
+    "camo"
+  ],
+
+  "GEOMETRIC": [
+    "GEOMETRIC",
+    "geometric",
+    "geometric pattern",
+    "geometric print"
+  ],
+
+  "ABSTRACT": [
+    "ABSTRACT",
+    "abstract",
+    "abstract pattern",
+    "abstract print"
+  ],
+
+  "GRAPHIC": [
+    "GRAPHIC",
+    "graphic",
+    "graphic print"
+  ],
+
+  "LOGO": [
+    "LOGO",
+    "logo",
+    "logo print",
+    "logo graphic"
+  ],
+
+  "COLOR_BLOCK": [
+    "COLOR_BLOCK",
+    "color block",
+    "color-block",
+    "color blocking"
+  ],
+
+  "PRINTED": [
+    "PRINTED",
+    "printed",
+    "print"
+  ],
+
+  "TEXTURED": [
+    "TEXTURED",
+    "textured",
+    "texture",
+    "textured pattern"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

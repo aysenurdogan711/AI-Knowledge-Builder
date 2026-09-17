@@ -1,0 +1,44 @@
+{
+  "REGULAR": [
+    "REGULAR",
+    "regular",
+    "regular fit",
+    "low-top",
+    "low top",
+    "low cut"
+  ],
+
+  "SLIM": [
+    "SLIM",
+    "slim",
+    "slim fit"
+  ],
+
+  "RELAXED": [
+    "RELAXED",
+    "relaxed",
+    "relaxed fit"
+  ],
+
+  "OVERSIZE": [
+    "OVERSIZE",
+    "oversized",
+    "oversize"
+  ],
+
+  "SKINNY": [
+    "SKINNY",
+    "skinny"
+  ],
+
+  "LOOSE": [
+    "LOOSE",
+    "loose",
+    "loose fit"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

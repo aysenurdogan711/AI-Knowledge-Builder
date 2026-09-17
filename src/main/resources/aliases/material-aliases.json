@@ -1,0 +1,95 @@
+{
+  "COTTON": [
+    "COTTON",
+    "cotton"
+  ],
+
+  "POLYESTER": [
+    "POLYESTER",
+    "polyester"
+  ],
+
+  "LEATHER": [
+    "LEATHER",
+    "leather"
+  ],
+
+  "SUEDE": [
+    "SUEDE",
+    "suede",
+    "suede leather"
+  ],
+
+  "DENIM": [
+    "DENIM",
+    "denim"
+  ],
+
+  "WOOL": [
+    "WOOL",
+    "wool"
+  ],
+
+  "LINEN": [
+    "LINEN",
+    "linen"
+  ],
+
+  "SYNTHETIC": [
+    "SYNTHETIC",
+    "synthetic",
+    "synthetic material"
+  ],
+
+  "NYLON": [
+    "NYLON",
+    "nylon"
+  ],
+
+  "KNIT": [
+    "KNIT",
+    "knit",
+    "knitted"
+  ],
+
+  "MESH": [
+    "MESH",
+    "mesh",
+    "mesh upper"
+  ],
+
+  "RUBBER": [
+    "RUBBER",
+    "rubber"
+  ],
+
+  "CANVAS": [
+    "CANVAS",
+    "canvas"
+  ],
+
+  "FLEECE": [
+    "FLEECE",
+    "fleece"
+  ],
+
+  "SATIN": [
+    "SATIN",
+    "satin"
+  ],
+
+  "SILK": [
+    "SILK",
+    "silk"
+  ],
+
+  "CORDUROY": [
+    "CORDUROY",
+    "corduroy"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}

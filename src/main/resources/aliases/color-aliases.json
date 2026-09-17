@@ -1,0 +1,135 @@
+{
+  "BLACK": [
+    "BLACK",
+    "black",
+    "siyah"
+  ],
+
+  "WHITE": [
+    "WHITE",
+    "white",
+    "off white",
+    "cream",
+    "beyaz"
+  ],
+
+  "GRAY": [
+    "GRAY",
+    "gray",
+    "grey",
+    "gri"
+  ],
+
+  "BEIGE": [
+    "BEIGE",
+    "beige",
+    "bej"
+  ],
+
+  "BROWN": [
+    "BROWN",
+    "brown",
+    "kahverengi"
+  ],
+
+  "RED": [
+    "RED",
+    "red",
+    "kırmızı"
+  ],
+
+  "ORANGE": [
+    "ORANGE",
+    "orange",
+    "turuncu"
+  ],
+
+  "YELLOW": [
+    "YELLOW",
+    "yellow",
+    "sarı"
+  ],
+
+  "GREEN": [
+    "GREEN",
+    "green",
+    "yeşil"
+  ],
+
+  "OLIVE": [
+    "OLIVE",
+    "olive",
+    "olive green",
+    "army green",
+    "khaki",
+    "haki"
+  ],
+
+  "BLUE": [
+    "BLUE",
+    "blue",
+    "mavi"
+  ],
+
+  "NAVY": [
+    "NAVY",
+    "navy",
+    "dark navy",
+    "lacivert"
+  ],
+
+  "PURPLE": [
+    "PURPLE",
+    "purple",
+    "mor"
+  ],
+
+  "PINK": [
+    "PINK",
+    "pink",
+    "pembe"
+  ],
+
+  "BURGUNDY": [
+    "BURGUNDY",
+    "burgundy",
+    "bordo"
+  ],
+  "TURQUOISE": [
+    "TURQUOISE",
+    "turquoise",
+    "turkuaz"
+],
+
+"MINT": [
+    "MINT",
+    "mint",
+    "mint green"
+],
+
+"TEAL": [
+    "TEAL",
+    "teal"
+],
+
+"GOLD": [
+    "GOLD",
+    "gold",
+    "golden",
+    "altın"
+],
+
+"SILVER": [
+    "SILVER",
+    "silver",
+    "metallic silver",
+    "gümüş"
+],
+
+  "MULTICOLOR": [
+    "MULTICOLOR",
+    "multicolor",
+    "multi color",
+    "çok renkli"
+  ]
+}

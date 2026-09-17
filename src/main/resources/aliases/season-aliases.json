@@ -1,0 +1,34 @@
+{
+  "SPRING": [
+    "SPRING",
+    "spring"
+  ],
+
+  "SUMMER": [
+    "SUMMER",
+    "summer"
+  ],
+
+  "AUTUMN": [
+    "AUTUMN",
+    "autumn",
+    "fall"
+  ],
+
+  "WINTER": [
+    "WINTER",
+    "winter"
+  ],
+
+  "ALL_SEASON": [
+    "ALL_SEASON",
+    "all season",
+    "all_season",
+    "all-season"
+  ],
+
+  "UNKNOWN": [
+    "UNKNOWN",
+    "unknown"
+  ]
+}
