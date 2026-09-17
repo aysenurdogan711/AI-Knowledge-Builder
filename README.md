@@ -1,940 +1,406 @@
-\# AI Knowledge Builder
+# AI Knowledge Builder
 
+AI-powered fashion knowledge generation and outfit analysis service built with **Java, Spring Boot, and OpenAI**.
 
+## Overview
 
-AI-powered knowledge generation and outfit analysis service built with Spring Boot and OpenAI.
+AI Knowledge Builder is a backend service that transforms fashion images and prompts into structured fashion knowledge.
 
+The service uses OpenAI's multimodal capabilities to analyze fashion images, extracts structured information from AI responses, and normalizes generated attributes into predefined application-level values.
 
+It also provides AI-assisted outfit category planning and outfit selection functionality.
 
-\## Overview
+The project is designed as a supporting AI component for fashion recommendation workflows.
 
+---
 
+## Features
 
-AI Knowledge Builder is a Spring Boot service designed to transform fashion product and outfit information into structured knowledge using OpenAI.
+- 🧠 AI-powered fashion image analysis
+- 👁️ Multimodal image and text processing
+- 🤖 OpenAI Responses API integration
+- 📝 External prompt management
+- 🔄 Structured AI response parsing
+- 🏷️ Fashion attribute normalization
+- 👗 Outfit category planning
+- ✨ AI-assisted outfit selection
+- 🌐 REST API
+- 🧩 Strongly typed domain models and enums
+- 🔤 Alias-based attribute mapping
 
+---
 
-
-The application can analyze an image provided through a URL, send the image together with a predefined vision-analysis prompt to OpenAI, parse the generated JSON response, and map AI-generated attributes into predefined application enums.
-
-
-
-The service also provides AI-powered outfit category planning and outfit selection capabilities.
-
-
-
-This project is designed as a knowledge-generation component for AI-powered fashion recommendation workflows.
-
-
-
-\---
-
-
-
-\## Key Features
-
-
-
-\- AI-powered fashion image analysis
-
-\- OpenAI Responses API integration
-
-\- Image and text input support
-
-\- Prompt management through external resource files
-
-\- Structured JSON response parsing
-
-\- AI attribute normalization through alias mappings
-
-\- Product and outfit knowledge generation
-
-\- Outfit category planning
-
-\- AI-based outfit selection
-
-\- REST API endpoints
-
-\- Structured domain models and enums
-
-
-
-\---
-
-
-
-\## Architecture
-
-
+## Architecture
 
 ```text
-
-&#x20;                   Image URL / Prompt
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                 ┌──────────────────┐
-
-&#x20;                 │ KnowledgeController │
-
-&#x20;                 └────────┬─────────┘
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;             ┌──────────────────────────┐
-
-&#x20;             │ KnowledgeGenerationService │
-
-&#x20;             └────────────┬─────────────┘
-
-&#x20;                          │
-
-&#x20;            ┌─────────────┴─────────────┐
-
-&#x20;            │                           │
-
-&#x20;            ▼                           ▼
-
-&#x20;     ┌───────────────┐          ┌────────────────┐
-
-&#x20;     │ PromptBuilder │          │  OpenAiService │
-
-&#x20;     └───────────────┘          └───────┬────────┘
-
-&#x20;                                        │
-
-&#x20;                                        ▼
-
-&#x20;                               OpenAI Responses API
-
-&#x20;                                        │
-
-&#x20;                                        ▼
-
-&#x20;                                 OpenAI Response
-
-&#x20;                                        │
-
-&#x20;                                        ▼
-
-&#x20;                               ┌────────────────┐
-
-&#x20;                               │ KnowledgeParser │
-
-&#x20;                               └───────┬────────┘
-
-&#x20;                                       │
-
-&#x20;                      ┌────────────────┼────────────────┐
-
-&#x20;                      │                │                │
-
-&#x20;                      ▼                ▼                ▼
-
-&#x20;                CategoryMapper   ColorMapper     MaterialMapper
-
-&#x20;                      │
-
-&#x20;                      ├── PatternMapper
-
-&#x20;                      ├── FitMapper
-
-&#x20;                      ├── SeasonMapper
-
-&#x20;                      ├── StyleMapper
-
-&#x20;                      └── FormalityMapper
-
-&#x20;                                       │
-
-&#x20;                                       ▼
-
-&#x20;                             Structured Knowledge
-
+                         Image URL / Prompt
+                                │
+                                ▼
+                     ┌────────────────────┐
+                     │ KnowledgeController │
+                     └─────────┬──────────┘
+                               │
+                               ▼
+                  ┌──────────────────────────┐
+                  │ KnowledgeGenerationService│
+                  └────────────┬─────────────┘
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+             ┌──────────────┐      ┌───────────────┐
+             │ PromptBuilder│      │ OpenAiService │
+             └──────────────┘      └───────┬───────┘
+                                           │
+                                           ▼
+                                  OpenAI Responses API
+                                           │
+                                           ▼
+                                   OpenAI Response
+                                           │
+                                           ▼
+                                  ┌────────────────┐
+                                  │ KnowledgeParser│
+                                  └───────┬────────┘
+                                          │
+                 ┌────────────────────────┼──────────────────────┐
+                 │                        │                      │
+                 ▼                        ▼                      ▼
+          CategoryMapper            ColorMapper           MaterialMapper
+                 │
+                 ├── PatternMapper
+                 ├── FitMapper
+                 ├── SeasonMapper
+                 ├── StyleMapper
+                 └── FormalityMapper
+                                          │
+                                          ▼
+                                Structured Knowledge
 ```
 
+---
 
+## Processing Flow
 
-\---
-
-
-
-\## AI Knowledge Generation Flow
-
-
-
-The main knowledge generation process follows these steps:
-
-
-
-1\. The client sends an image URL to the REST API.
-
-2\. `KnowledgeController` receives the request.
-
-3\. `KnowledgeGenerationService` loads the vision analysis prompt.
-
-4\. `PromptBuilder` reads the prompt from the application resources.
-
-5\. `OpenAiService` creates a multimodal request containing text and image input.
-
-6\. The request is sent to the OpenAI Responses API.
-
-7\. The returned response is extracted from the `output\_text` content.
-
-8\. `KnowledgeParser` converts the JSON response into the application's response model.
-
-9\. Attribute mapper services normalize AI-generated values.
-
-10\. A structured `Knowledge` object is returned.
-
-
-
-\---
-
-
-
-\## AI Attribute Normalization
-
-
-
-AI-generated values may contain different expressions for the same concept.
-
-
-
-To provide consistent application-level values, the project uses dedicated mapper services and alias dictionaries.
-
-
-
-Supported attribute groups include:
-
-
-
-\- Outfit Category
-
-\- Color Profile
-
-\- Material
-
-\- Pattern
-
-\- Fit
-
-\- Season
-
-\- Style
-
-\- Formality
-
-
-
-Alias definitions are stored under:
-
-
+The main knowledge generation pipeline is:
 
 ```text
+Image URL
+   ↓
+REST Controller
+   ↓
+Knowledge Generation Service
+   ↓
+Prompt Builder
+   ↓
+OpenAI Responses API
+   ↓
+AI JSON Response
+   ↓
+Knowledge Parser
+   ↓
+Attribute Mappers
+   ↓
+Structured Knowledge
+```
 
+### 1. Image Analysis
+
+The client provides an image URL through the REST API.
+
+The service combines the image with a predefined vision-analysis prompt and sends the request to OpenAI.
+
+### 2. Response Parsing
+
+The generated `output_text` is extracted from the OpenAI response and converted into a strongly typed Java response model.
+
+### 3. Attribute Normalization
+
+AI-generated values are mapped to predefined application enums.
+
+Supported attributes include:
+
+- Outfit Category
+- Color
+- Material
+- Pattern
+- Fit
+- Season
+- Style
+- Formality
+
+Alias definitions are stored as JSON resources under:
+
+```text
 src/main/resources/aliases/
-
 ```
 
+The mapping layer prevents different AI-generated expressions from producing inconsistent application values.
 
+---
 
-The corresponding mapping services are located under:
+## Outfit Analysis
 
+The service also supports AI-assisted outfit workflows.
 
+### Outfit Category Planning
 
-```text
+The application can generate structured outfit category plans from a prompt.
 
-src/main/java/com/sneaksapp/knowledgebuilder/service/
+### Best Outfit Selection
 
-```
+The application can process an outfit-selection prompt and return a structured `OutfitSelection` model.
 
+These capabilities allow the service to act as an AI reasoning layer within a larger fashion recommendation system.
 
+---
 
-This approach creates a normalization layer between free-form AI output and the application's structured domain model.
+## REST API
 
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/knowledge/generate` | Analyze an image and generate structured fashion knowledge |
+| `POST` | `/knowledge/select-categories` | Generate outfit category plans |
+| `POST` | `/knowledge/select` | Select an outfit based on a prompt |
+| `GET` | `/test/color` | Test color attribute normalization |
 
-
-\---
-
-
-
-\## Outfit Analysis
-
-
-
-In addition to image-based knowledge generation, the service supports AI-assisted outfit planning.
-
-
-
-\### Outfit Category Selection
-
-
-
-The `/knowledge/select-categories` endpoint sends a prompt to OpenAI and converts the returned JSON into a list of `OutfitCategoryPlan` objects.
-
-
-
-\### Best Outfit Selection
-
-
-
-The `/knowledge/select` endpoint sends a prompt to OpenAI and converts the returned JSON into an `OutfitSelection` object.
-
-
-
-These capabilities allow the service to support higher-level outfit recommendation workflows.
-
-
-
-\---
-
-
-
-\## REST API
-
-
-
-\### Generate Knowledge
-
-
+### Generate Knowledge
 
 ```http
-
 POST /knowledge/generate
-
 Content-Type: application/json
-
 ```
-
-
-
-Request:
-
-
 
 ```json
-
 {
-
-&#x20; "imageUrl": "https://example.com/product-image.jpg"
-
+  "imageUrl": "https://example.com/product-image.jpg"
 }
-
 ```
 
-
-
-The endpoint analyzes the supplied image and returns structured knowledge about the detected fashion attributes.
-
-
-
-\---
-
-
-
-\### Select Outfit Categories
-
-
+### Select Outfit Categories
 
 ```http
-
 POST /knowledge/select-categories
-
 Content-Type: application/json
-
 ```
-
-
-
-Request:
-
-
 
 ```json
-
 {
-
-&#x20; "prompt": "Create suitable outfit categories for this product."
-
+  "prompt": "Create suitable outfit categories for this product."
 }
-
 ```
 
-
-
-Returns a structured list of `OutfitCategoryPlan` objects.
-
-
-
-\---
-
-
-
-\### Select Best Outfit
-
-
+### Select Best Outfit
 
 ```http
-
 POST /knowledge/select
-
 Content-Type: application/json
-
 ```
-
-
-
-Request:
-
-
 
 ```json
-
 {
-
-&#x20; "prompt": "Select the best outfit combination from the provided products."
-
+  "prompt": "Select the best outfit combination from the provided products."
 }
-
 ```
 
+---
 
-
-Returns an `OutfitSelection` object.
-
-
-
-\---
-
-
-
-\### Color Mapper Test Endpoint
-
-
-
-```http
-
-GET /test/color?value=navy
-
-```
-
-
-
-This endpoint is provided for testing the color normalization layer.
-
-
-
-\---
-
-
-
-\## Project Structure
-
-
+## Project Structure
 
 ```text
-
-AI-Knowledge-Builder/
-
-│
-
-├── .mvn/
-
-│   └── wrapper/
-
-│
-
-├── src/
-
-│   ├── main/
-
-│   │   ├── java/
-
-│   │   │   └── com/
-
-│   │   │       └── sneaksapp/
-
-│   │   │           └── knowledgebuilder/
-
-│   │   │               ├── config/
-
-│   │   │               │   └── RestClientConfig.java
-
-│   │   │               │
-
-│   │   │               ├── controller/
-
-│   │   │               │   ├── KnowledgeController.java
-
-│   │   │               │   └── TestController.java
-
-│   │   │               │
-
-│   │   │               ├── generator/
-
-│   │   │               │   └── KnowledgeGenerationService.java
-
-│   │   │               │
-
-│   │   │               ├── model/
-
-│   │   │               │   ├── Knowledge.java
-
-│   │   │               │   ├── OutfitAnalysis.java
-
-│   │   │               │   ├── OutfitCategoryPlan.java
-
-│   │   │               │   ├── OutfitItem.java
-
-│   │   │               │   ├── OutfitSelection.java
-
-│   │   │               │   └── enums/
-
-│   │   │               │
-
-│   │   │               ├── openai/
-
-│   │   │               │   ├── OpenAiService.java
-
-│   │   │               │   ├── PromptBuilder.java
-
-│   │   │               │   ├── request/
-
-│   │   │               │   └── response/
-
-│   │   │               │
-
-│   │   │               ├── parser/
-
-│   │   │               │   └── KnowledgeParser.java
-
-│   │   │               │
-
-│   │   │               └── service/
-
-│   │   │                   ├── CategoryMapper.java
-
-│   │   │                   ├── ColorMapper.java
-
-│   │   │                   ├── FitMapper.java
-
-│   │   │                   ├── FormalityMapper.java
-
-│   │   │                   ├── JsonAliasMapper.java
-
-│   │   │                   ├── MaterialMapper.java
-
-│   │   │                   ├── PatternMapper.java
-
-│   │   │                   ├── SeasonMapper.java
-
-│   │   │                   └── StyleMapper.java
-
-│   │   │
-
-│   │   └── resources/
-
-│   │       ├── aliases/
-
-│   │       │   ├── category-aliases.json
-
-│   │       │   ├── color-aliases.json
-
-│   │       │   ├── fit-aliases.json
-
-│   │       │   ├── formality-aliases.json
-
-│   │       │   ├── material-aliases.json
-
-│   │       │   ├── pattern-aliases.json
-
-│   │       │   ├── season-aliases.json
-
-│   │       │   └── style-aliases.json
-
-│   │       │
-
-│   │       ├── prompts/
-
-│   │       │   ├── category-aliases.txt
-
-│   │       │   ├── color-aliases.txt
-
-│   │       │   ├── harmony-analysis.txt
-
-│   │       │   └── vision-analysis.txt
-
-│   │       │
-
-│   │       └── application.properties
-
+src/
+├── main/
+│   ├── java/com/sneaksapp/knowledgebuilder/
 │   │
-
-│   └── test/
-
-│       └── java/
-
+│   ├── config/
+│   │   └── RestClientConfig.java
+│   │
+│   ├── controller/
+│   │   ├── KnowledgeController.java
+│   │   └── TestController.java
+│   │
+│   ├── generator/
+│   │   └── KnowledgeGenerationService.java
+│   │
+│   ├── model/
+│   │   ├── Knowledge.java
+│   │   ├── OutfitAnalysis.java
+│   │   ├── OutfitCategoryPlan.java
+│   │   ├── OutfitItem.java
+│   │   ├── OutfitSelection.java
+│   │   └── enums/
+│   │
+│   ├── openai/
+│   │   ├── OpenAiService.java
+│   │   ├── PromptBuilder.java
+│   │   ├── request/
+│   │   └── response/
+│   │
+│   ├── parser/
+│   │   └── KnowledgeParser.java
+│   │
+│   └── service/
+│       ├── CategoryMapper.java
+│       ├── ColorMapper.java
+│       ├── FitMapper.java
+│       ├── FormalityMapper.java
+│       ├── JsonAliasMapper.java
+│       ├── MaterialMapper.java
+│       ├── PatternMapper.java
+│       ├── SeasonMapper.java
+│       └── StyleMapper.java
 │
-
-├── .gitignore
-
-├── pom.xml
-
-├── mvnw
-
-├── mvnw.cmd
-
-└── README.md
-
+└── resources/
+    ├── aliases/
+    └── prompts/
 ```
 
+---
 
+## Technologies
 
-\---
-
-
-
-\## Technologies
-
-
-
-| Technology | Purpose |
-
+| Technology | Role |
 |---|---|
+| **Java 25** | Backend development |
+| **Spring Boot 4.1.0** | Application framework |
+| **Spring Web** | REST API |
+| **Spring Validation** | Validation support |
+| **OpenAI API** | AI and multimodal analysis |
+| **Jackson** | JSON processing |
+| **Lombok** | Boilerplate reduction |
+| **Maven** | Build and dependency management |
 
-| Java 25 | Application development |
+---
 
-| Spring Boot 4.1.0 | Application framework |
+## Prompt Management
 
-| Spring Web | REST API development |
+Prompts are maintained separately from the Java source code:
 
-| Spring Validation | Request validation support |
+```text
+src/main/resources/prompts/
+```
 
-| OpenAI API | AI-powered image and text analysis |
+Current prompt resources include:
 
-| Jackson | JSON serialization and deserialization |
+```text
+vision-analysis.txt
+harmony-analysis.txt
+category-aliases.txt
+color-aliases.txt
+```
 
-| Lombok | Boilerplate reduction |
+`PromptBuilder` loads these resources from the application classpath.
 
-| Maven | Dependency and build management |
+This keeps AI prompt definitions separate from business logic and makes them easier to maintain.
 
+---
 
+## Error Handling and Parsing
 
-\---
+The application validates the OpenAI response before processing its content.
 
+The response pipeline is:
 
+```text
+OpenAI Response
+      ↓
+Output Extraction
+      ↓
+JSON Deserialization
+      ↓
+AI Response Model
+      ↓
+Attribute Mapping
+      ↓
+Domain Model
+```
 
-\## Running Locally
+Invalid or incomplete responses result in application-level exceptions rather than silently producing incomplete knowledge.
 
+---
 
+## Relationship to the SneaksUp Recommendation System
 
-Start the Spring Boot application:
+AI Knowledge Builder is designed as a supporting component for a broader fashion recommendation architecture.
 
+Its responsibility is to transform visual and textual fashion information into structured knowledge that can be consumed by downstream recommendation components.
 
+```text
+              AI Knowledge Builder
+                       │
+                       ▼
+            Structured Fashion Data
+                       │
+                       ▼
+          Recommendation Components
+                       │
+                       ▼
+               Outfit Recommendations
+```
+
+This separation keeps AI knowledge generation independent from recommendation logic.
+
+---
+
+## Running Locally
+
+Start the application with Maven:
 
 ```powershell
-
-.\\mvnw.cmd spring-boot:run
-
+.\mvnw.cmd spring-boot:run
 ```
-
-
 
 The application runs on:
 
-
-
 ```text
-
 http://localhost:8080
-
 ```
 
-
-
-\---
-
-
-
-\## Build and Test
-
-
-
-Run the test suite:
-
-
+### Build
 
 ```powershell
-
-.\\mvnw.cmd clean test
-
+.\mvnw.cmd clean package
 ```
 
-
-
-Build the application:
-
-
+### Test
 
 ```powershell
-
-.\\mvnw.cmd clean package
-
+.\mvnw.cmd clean test
 ```
 
+---
 
+## Current Scope
 
-Run the generated application:
+The current repository focuses on the AI knowledge-generation and outfit-analysis layer.
 
+It does not contain:
 
+- A persistent database layer
+- A user-facing frontend
+- The complete recommendation engine
 
-```powershell
+The service is intended to integrate with other components in a larger AI-powered fashion recommendation ecosystem.
 
-java -jar target/knowledge-builder-0.0.1-SNAPSHOT.jar
+---
 
-```
+## Future Improvements
 
+- OpenAPI / Swagger documentation
+- Expanded automated test coverage
+- Centralized exception handling
+- Stronger response validation
+- Structured production logging
+- Persistent knowledge storage
+- Integration with recommendation services
+- Docker-based deployment
 
+---
 
-\---
+## Author
 
-
-
-\## Prompt Management
-
-
-
-AI prompts are kept outside the Java source code under:
-
-
-
-```text
-
-src/main/resources/prompts/
-
-```
-
-
-
-`PromptBuilder` loads prompt files from the application's classpath.
-
-
-
-This separates prompt content from application logic and makes prompts easier to maintain and update.
-
-
-
-\---
-
-
-
-\## Error Handling and Response Parsing
-
-
-
-The application validates the OpenAI response structure before extracting generated content.
-
-
-
-The service searches the response output for `output\_text` content and throws an application exception when a valid response cannot be extracted.
-
-
-
-AI-generated JSON responses are then deserialized into strongly typed Java models.
-
-
-
-This provides a structured processing pipeline:
-
-
-
-```text
-
-OpenAI Response
-
-&#x20;     ↓
-
-Output Extraction
-
-&#x20;     ↓
-
-JSON Parsing
-
-&#x20;     ↓
-
-Domain Model
-
-&#x20;     ↓
-
-Attribute Mapping
-
-```
-
-
-
-\---
-
-
-
-\## Relationship to the SneaksUp Recommendation System
-
-
-
-AI Knowledge Builder is designed as a supporting AI component for a broader fashion recommendation workflow.
-
-
-
-Its primary responsibility is to transform visual and textual fashion information into structured knowledge that can be consumed by downstream recommendation components.
-
-
-
-Conceptually:
-
-
-
-```text
-
-&#x20;                AI Knowledge Builder
-
-&#x20;                        │
-
-&#x20;                        ▼
-
-&#x20;             Structured Fashion Knowledge
-
-&#x20;                        │
-
-&#x20;                        ▼
-
-&#x20;             Recommendation Components
-
-&#x20;                        │
-
-&#x20;                        ▼
-
-&#x20;                Outfit Recommendations
-
-```
-
-
-
-This separation allows knowledge generation and recommendation logic to remain independent services/components.
-
-
-
-\---
-
-
-
-\## What This Project Demonstrates
-
-
-
-This project demonstrates practical experience with:
-
-
-
-\- Spring Boot REST API development
-
-\- Java backend architecture
-
-\- OpenAI API integration
-
-\- Multimodal AI requests
-
-\- Prompt engineering and prompt management
-
-\- JSON response processing
-
-\- DTO-based API integration
-
-\- Domain modeling with Java enums
-
-\- AI output normalization
-
-\- Alias-based attribute mapping
-
-\- Separation of concerns
-
-\- Maven-based project management
-
-
-
-\---
-
-
-
-\## Current Scope
-
-
-
-The current implementation focuses on the AI knowledge-generation and outfit-analysis layer.
-
-
-
-It does not include a persistent database layer or user-facing frontend within this repository.
-
-
-
-The service is intended to operate as a backend component that can be integrated with other recommendation and e-commerce components.
-
-
-
-\---
-
-
-
-\## Future Improvements
-
-
-
-Potential future improvements include:
-
-
-
-\- Stronger request validation
-
-\- Centralized exception handling
-
-\- OpenAPI / Swagger documentation
-
-\- More comprehensive automated tests
-
-\- Improved response validation
-
-\- Structured logging
-
-\- Additional fashion attributes
-
-\- Database persistence for generated knowledge
-
-\- Integration with recommendation services
-
-\- Docker containerization
-
-\- Production-oriented configuration management
-
-
-
-\---
-
-
-
-\## Author
-
-
-
-\*\*Ayşenur DOĞAN\*\*
-
-
+**Ayşenur DOĞAN**
 
 Computer Engineering Student
 
-
-
-GitHub: \[aysenurdogan711](https://github.com/aysenurdogan711)
-
+[GitHub](https://github.com/aysenurdogan711)
